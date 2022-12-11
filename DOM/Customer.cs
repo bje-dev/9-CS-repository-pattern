@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DOM
 {
-    class Customer
+    public class Customer
     {
         public Guid IdCustomer { get; set; }
         public string FirstName { get; set; }

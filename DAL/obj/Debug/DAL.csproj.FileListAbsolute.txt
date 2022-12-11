@@ -1,0 +1,17 @@
+D:\TC\repository-pattern\DAL\bin\Debug\DAL.dll
+D:\TC\repository-pattern\DAL\bin\Debug\DAL.pdb
+D:\TC\repository-pattern\DAL\bin\Debug\DOM.dll
+D:\TC\repository-pattern\DAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.AccessControl.dll
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.Permissions.dll
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.Principal.Windows.dll
+D:\TC\repository-pattern\DAL\bin\Debug\DOM.pdb
+D:\TC\repository-pattern\DAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.AccessControl.xml
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.Permissions.xml
+D:\TC\repository-pattern\DAL\bin\Debug\System.Security.Principal.Windows.xml
+D:\TC\repository-pattern\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\TC\repository-pattern\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\TC\repository-pattern\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\TC\repository-pattern\DAL\obj\Debug\DAL.dll
+D:\TC\repository-pattern\DAL\obj\Debug\DAL.pdb

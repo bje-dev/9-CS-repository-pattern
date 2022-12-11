@@ -1,0 +1,15 @@
+D:\TC\repository-pattern\repository-pattern\bin\Debug\repository-pattern.exe.config
+D:\TC\repository-pattern\repository-pattern\bin\Debug\repository-pattern.exe
+D:\TC\repository-pattern\repository-pattern\bin\Debug\repository-pattern.pdb
+D:\TC\repository-pattern\repository-pattern\bin\Debug\DAL.dll
+D:\TC\repository-pattern\repository-pattern\bin\Debug\DOM.dll
+D:\TC\repository-pattern\repository-pattern\bin\Debug\DAL.pdb
+D:\TC\repository-pattern\repository-pattern\bin\Debug\DOM.pdb
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.csprojAssemblyReference.cache
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository_pattern.Form1.resources
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository_pattern.Properties.Resources.resources
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.csproj.GenerateResource.cache
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.csproj.CoreCompileInputs.cache
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.csproj.CopyComplete
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.exe
+D:\TC\repository-pattern\repository-pattern\obj\Debug\repository-pattern.pdb

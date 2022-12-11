@@ -1,0 +1,6 @@
+D:\TC\repository-pattern\DOM\bin\Debug\DOM.dll
+D:\TC\repository-pattern\DOM\bin\Debug\DOM.pdb
+D:\TC\repository-pattern\DOM\obj\Debug\DOM.csprojAssemblyReference.cache
+D:\TC\repository-pattern\DOM\obj\Debug\DOM.csproj.CoreCompileInputs.cache
+D:\TC\repository-pattern\DOM\obj\Debug\DOM.dll
+D:\TC\repository-pattern\DOM\obj\Debug\DOM.pdb
