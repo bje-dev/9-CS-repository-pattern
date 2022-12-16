@@ -9,7 +9,22 @@ namespace DOM
     public class Address
     {
 
-        public Guid IdAddress { get; set; }
+        public Guid _IdAddress { get; set; }
+
+
+        public Guid IdAddress
+        {
+
+            get
+            {
+                return _IdAddress;
+            }
+
+            set
+            {
+                _IdAddress = value;
+            }
+        }
 
         private string _Street;
        
@@ -28,12 +43,41 @@ namespace DOM
             }
         }
 
-        private int Number { get; set; }
+        private int _Number { get; set; }
 
 
-        private string City { get; set; }
+        public int Number
+        {
 
-        
+            get
+            {
+                return _Number;
+            }
+
+            set
+            {
+                _Number = value;
+            }
+        }
+
+
+        private string _City { get; set; }
+
+
+        public string City
+        {
+
+            get
+            {
+                return _City;
+            }
+
+            set
+            {
+                _City = value;
+            }
+        }
+
         public Address()
         {
 
