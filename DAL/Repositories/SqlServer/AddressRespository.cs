@@ -41,44 +41,66 @@ namespace DAL.Repositories.SqlServer
         #endregion
 
 
-
+        //////////////////////////////////////////////GETALL//////////////////////////////////////////////
        
+        //FUNCIONALIDAD DE ESTE METODO:
+        //PRIMERO CREAMOS UNA LISTA DE DIRECCIONES: List<Address> addresses
+        //LUEGO USAMOS EL METODO ExecuteReader de la clase SqlHelper PARA EJECUTAR LA CONSULTA ALMACENADA EN SelectAllStatement.
+        //EL METODO ExecuteReader DE LA CLASE SqlHelper DEVUELVE UN OBJETO SqlDataReader, QUE PODEMOS USAR PARA ITERAR ATRAVES DE LOS RESULTADOS DE LA CONSULTA.
+        //DENTRO DE while LEEMOS LOS VALORES DE CADA FILA Y LOS ASIGNAMOS A UNA NUEVA INSTANCIA DE LA CLASE Address.
+        //AGREGAMOS ESA INSTANCIA A LA LISTA DE DIRECCIONES addreses Y DEVOLVEMOS LA LISTA DE DIRECCIONES.
+
 
         public IEnumerable<Address> GetAll()
         {
+            List<Address> addresses = new List<Address>();
 
-            //sing(var db = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text, new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("@IdAddress", id) }))
-            //{
+        using (SqlDataReader reader = SqlHelper.ExecuteReader(SelectAllStatement, System.Data.CommandType.Text ))
+             {
+        while (reader.Read())
+        {
+            Address address = new Address()
+            {
+                IdAddress = Convert.ToInt32(reader["IdAddress"]),
+                Street = reader["Street"].ToString(),
+                Number = reader["Number"].ToString(),
+                City = reader["City"].ToString()
+            };
 
-            //    Address address = new Address();
+            addresses.Add(address);
+        }
+             }
 
-            //    while (db.Read())
-            //    {
-            //        address = new Address(Guid.Parse(db[0].ToString()),
-            //        db[1].ToString(),
-            //        Convert.ToInt32(db[2].ToString()),
-            //        db[3].ToString());
-
-            //    }
-
-            //    return address;
-
-
-            //}
-
-            throw new NotImplementedException();
+             return addresses;
         }
 
+        /////////////////////////////////////////////GETONE////////////////////////////////////////////////////
+        
         public Address GetOne(Guid id)
         {
-            //Se debe declarar una variable del tipo objeto Address
-            //Se realiza por fuera para usarse como global ya que tambien se debe retornar
-            //Si se declara por dentro del using no se podria retornar ya que seria una variable local 
+            //SE DEBE DECLARAR UNA VARIABLE QUE ESTE REFERENCIADO CON LA CLASE ADDRESS.
+            //EL CONTENIDO DE ESTA VARIABLE SERA RETORNADA AL FINALIZAR. 
+            //SI ESTA VARIABLE SE DECLARA POR DENTRO DEL USING NO SE PODRIA RETORNAR YA QUE SERIA UNA VARIABLE LOCAL.
             
             Address address = default;
+            
+            //FUNCIONALIDAD DE ESTE METODO:
+            //SE UTILIZA UN BLOQUE using PARA CREAR UN OBJETO SqlDataReader LLAMADO db. 
+            //EL BLOQUE using ES UNA FORMA DE ASEGURARSE QUE EL OBJETO SqlDataReader SE LIBERE CORRECTAMENTE DESPUES DE QUE SE HAYAN COMPLETADO LAS OPERACIONES NECESARIAS EN LA BASE DE DATOS.
+            //AL FINAL DEL BLOQUE using EL OBJETO db SE LIBERARA AUTOMATICAMENTE Y SE CERRARA LA CONEXION DE BASE DE DATOS.
+            //EL METODO SQL SqlHelper.ExecuteReader() SE ESTA UTILIZANDO PARA EJECUTAR UNA CONSULTA SQL Y OBTENER RESULTADOS DE UNA BASE DE DATOS. 
+            //ENTONCES:
+            //SelectOneStatement ES UNA CADENA QUE REPRESENTA LA CONSULTA SQL QUE SE VA A EJECUTAR (DEFINIDOS MAS ARRIBA).
+            //System.Data.CommandType.Text ES UN VALOR ENUMERADO QUE INDICA QUE LA CONSULTA SQL ES UN COMANDO DE TEXTO. PUEDE TAMBIEN ESPECIFICARSE SI ES UN STOREPROCEDURE ETC EN LUGAR DE UN TEXTO.
+            //new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("@IdAddress", id)} ES UN ARREGLO DE PARAMETROS, EN ESTE CASO SOLO SE ESTA PASANDO UN PARAMETRO LLAMADO @IdAddress CON EL VALOR id.
 
-            using (var db = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text,
-                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("@IdAddress", id)} ))
+          using (var db = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text,
+                  new System.Data.SqlClient.SqlParameter[] 
+                    {
+                    new System.Data.SqlClient.SqlParameter("@IdAddress", id)
+                    })
+                )
+            
             {
 
                if (db.Read())
@@ -97,18 +119,15 @@ namespace DAL.Repositories.SqlServer
                     address.Street = x[1].ToString();
                     address.Number = int.Parse(x[2].ToString());
                     address.City = x[3].ToString();
-
                                         
-
                 }
 
                 return address;
-
-
             }
                
-                    
          }
+
+        ////////////////////////////////////////////INSERT////////////////////////////////////////////////////
 
         public void Insert(Address obj)
         {
@@ -135,16 +154,19 @@ namespace DAL.Repositories.SqlServer
          
         }
 
+        /////////////////////////////////////////////UPDATE///////////////////////////////////////////////
+
         public void Update(Address obj)
         {
             //Execute NonQuery
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
-          {
+            
+                {
                 new SqlParameter("@IdAddres",obj.IdAddress)
 
-          };
+                };
 
                 SqlHelper.ExecuteNonQuery(UpdateStatement, System.Data.CommandType.Text, parameters);
             }
@@ -156,12 +178,27 @@ namespace DAL.Repositories.SqlServer
           
         }
 
+        /////////////////////////////////////////////////DELETE///////////////////////////////////////////
+
         public void Delete(Guid id)
         {
 
             //Execute NonQuery
+            try 
+	        {
+                SqlParameter[] parameters = new SqlParameter[]
+                    {
+                    new SqlParameter("@IdAddress",id)
+                    };
 
-            throw new NotImplementedException();
+                SqlHelper.ExecuteNonQuery(DeleteStatement, System.Data.CommandType.Text, parameters);
+            }
+	        catch (Exception)
+	        {
+
+		    throw;
+	        }
+
         }
     }
 }
